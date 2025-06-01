@@ -1,0 +1,38 @@
+version: 2.1
+orbs:
+  node: circleci/node@5
+
+jobs:
+  test-node:
+    executor: node/default
+    working_directory: ~/project/backend
+    steps:
+      - checkout:
+          path: ~/project
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Run tests
+          command: echo "No test specified in package.json"
+
+  sonar_scan:
+    docker:
+      - image: sonarsource/sonar-scanner-cli
+    steps:
+      - checkout
+      - run:
+          name: Run SonarQube Scan
+          command: |
+            sonar-scanner \
+              -Dsonar.projectKey=Customer-Portal \
+              -Dsonar.organization=mpho-hlakoane \
+              -Dsonar.host.url=https://sonarcloud.io \
+              -Dsonar.login=$SONAR_TOKEN
+
+workflows:
+  build-and-test:
+    jobs:
+      - test-node
+      - sonar_scan:
+          requires:
+            - test-node
