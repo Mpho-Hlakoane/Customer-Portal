@@ -189,6 +189,10 @@ export default function Login({ onLogin }) {
 
           {message && <p className="message">{message}</p>}
 
+          <div className="forgot-password">
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        
           <div className="remember-me">
              <input type="checkbox" id="rememberMe" name="rememberMe" />
              <label htmlFor="rememberMe">Remember Me</label>

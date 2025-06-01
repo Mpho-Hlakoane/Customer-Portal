@@ -6,6 +6,8 @@ import Login from './Login.jsx';
 import Register from './Register.jsx';
 import MakePayment from './MakePayment.jsx';
 import EmployeeDashboard from './EmployeeDashboard.jsx';
+import ForgotPassword from './ForgotPassword.jsx'; 
+
 import './AuthForm.css'; 
 import "./Home.css";
 
@@ -24,10 +26,13 @@ function App() {
   return (
     <div className="home-container">
       <div className="auth-wrapper">
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
           <Route
             path="/make-payment"
             element={
