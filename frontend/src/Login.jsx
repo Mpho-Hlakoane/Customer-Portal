@@ -19,6 +19,13 @@ export default function Login({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+    if (token && onLogin) {
+      onLogin(token);
+    }
+  }, [onLogin]);
+
   const validate = () => {
     const errs = {};
     if (!form.role) errs.role = 'Please select a role';
@@ -175,11 +182,14 @@ export default function Login({ onLogin }) {
           <div className="form-group">
             <label>Password:</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               value={form.password}
               onChange={handleChange}
             />
+            <button type="button" onClick={() => setShowPassword(!showPassword)}>
+             {showPassword ? 'Hide' : 'Show'}
+           </button>
             {errors.password && <div className="error">{errors.password}</div>}
           </div>
 
@@ -193,10 +203,16 @@ export default function Login({ onLogin }) {
           <Link to="/forgot-password">Forgot Password?</Link>
         </div>
         
-          <div className="remember-me">
-             <input type="checkbox" id="rememberMe" name="rememberMe" />
-             <label htmlFor="rememberMe">Remember Me</label>
-          </div> 
+        <div className="remember-me">
+          <input
+            type="checkbox"
+            id="rememberMe"
+            name="rememberMe"
+            checked={form.rememberMe}
+            onChange={handleChange}
+          />
+            <label htmlFor="rememberMe">Remember Me</label>
+         </div>
 
           <p>
             Don’t have an account? <Link to="/register">Register here</Link>
