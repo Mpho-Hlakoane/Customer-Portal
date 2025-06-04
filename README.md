@@ -46,8 +46,8 @@ This project is an internal international payment system developed for an intern
 
 - **Frontend:** React.js
 - **Backend:** Node.js, Express.js
-- **Database:** (Choose your DB, e.g. PostgreSQL, MongoDB)
-- **Authentication:** JWT or secure session cookies
+- **Database:** MongoDB
+- **Authentication:** JWT 
 - **Password Hashing:** bcrypt
 - **Security Middleware:** Helmet, rate-limiter-flexible, csurf
 - **API calls:** Axios
@@ -59,13 +59,13 @@ This project is an internal international payment system developed for an intern
 
 - Node.js >= 16.x
 - npm or yarn
-- Database (PostgreSQL, MongoDB, etc.)
+- MongoDB
 - SSL Certificate for HTTPS (e.g., Let's Encrypt)
 
 ## Logging in details
 - **For Customer:**
   username: mphocustomer
-  accountNumber: '024689753
+  accountNumber: 024689753
   password: Customer101
 
 - **For Employee:**
@@ -77,7 +77,4 @@ This project is an internal international payment system developed for an intern
 ### Backend Setup
 
 1. Clone the repository:
-
-```bash
-[git clone https://your-repo-url.git](https://github.com/Mpho-Hlakoane/Customer-Portal)
-cd your-repo-folder
+   https://github.com/Mpho-Hlakoane/Customer-Portal 
